@@ -8,14 +8,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
+     /**
+     * Lists all event entities.
+     *
+     * @Route("/", name="_index")
      */
-    public function indexAction(Request $request)
+
+    public function indexAction()
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        $em = $this->getDoctrine()->getManager();
+
+        $events = $em->getRepository('AppBundle:Events')->findAll();
+
+        return $this->render('events/index.html.twig', array(
+            'events' => $events,
+        ));
     }
 }
