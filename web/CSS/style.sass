@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap')
 
-$primary-color: rgb(23, 162, 184)
-$secondary-color: darken(rgba($primary-color,0.2),10%)
-$third-color: rgb(0,0,0)
+$primary-color: rgb(220,53,69)
 $height-footer: 20vh
 
 //footer
@@ -10,17 +8,17 @@ html
   min-height: 100%
   position: relative
 
-    body
-    //margin-bottom: $height-footer
+body
+//margin-bottom: $height-footer
   
-  .page-footer
+.page-footer
     bottom: 0
     position: absolut !important
     width: 100%
     height: $height-footer
-    background-color: $secondary-color
+    background-color: $primary-color
     .footer-block 
-      margin: 20px 0   
+        margin: 20px 0   
 
 .socialmedia-icon
     display: inline-block
@@ -48,14 +46,14 @@ a:hover
 
 //font awsome icons
 
-.fas
-    line-height: 1.5
+// .fas
+//     line-height: 1.5
 
-.fa-trash, .fa-user-edit
-    font-size: 1.5em
+// .fa-trash, .fa-user-edit
+//     font-size: 1.5em
 
-.userIcon
-    font-size: 2.5em
+// .userIcon
+//     font-size: 2.5em
 
 //header
 .cardimg
@@ -66,7 +64,7 @@ a:hover
     height: 40vh
 
 .bg-color
-    background-color: rgba($third-color,0.5)
+    background-color: rgba($primary-color,0.5)
     font-family: 'Roboto', sans-serif
 
 //restaurant Card-img
@@ -80,8 +78,22 @@ a:hover
 //     height: 100%
 //     object-fit: cover
 
-#map
-    height: 60vh
+#appbundle_events_eventType
+    display: block
+    width: 100%
+    height: calc(1.5em + .75rem + 2px)
+    padding: .375rem .75rem
+    font-size: 1rem
+    font-weight: 400
+    line-height: 1.5
+    color: #495057
+    background-color: #fff
+    background-clip: padding-box
+    border: 1px solid #ced4da
+    border-radius: .25rem
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
+    margin-bottom: 15px
+
 
 
 

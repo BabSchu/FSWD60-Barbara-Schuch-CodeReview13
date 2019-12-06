@@ -1,72 +1,58 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Event</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Eventname</th>
-                <td>{{ event.eventName }}</td>
-            </tr>
-            <tr>
-                <th>Eventdatetime</th>
-                <td>{% if event.eventDatetime %}{{ event.eventDatetime|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Eventdescription</th>
-                <td>{{ event.eventDescription }}</td>
-            </tr>
-            <tr>
-                <th>Eventimage</th>
-                <td>{{ event.eventImage }}</td>
-            </tr>
-            <tr>
-                <th>Eventcapacity</th>
-                <td>{{ event.eventCapacity }}</td>
-            </tr>
-            <tr>
-                <th>Eventcontact</th>
-                <td>{{ event.eventContact }}</td>
-            </tr>
-            <tr>
-                <th>Eventlocationname</th>
-                <td>{{ event.eventlocationName }}</td>
-            </tr>
-            <tr>
-                <th>Eventlocationaddress</th>
-                <td>{{ event.eventlocationAddress }}</td>
-            </tr>
-            <tr>
-                <th>Eventlocationzipcity</th>
-                <td>{{ event.eventlocationZipCity }}</td>
-            </tr>
-            <tr>
-                <th>Eventurl</th>
-                <td>{{ event.eventUrl }}</td>
-            </tr>
-            <tr>
-                <th>Eventtype</th>
-                <td>{{ event.eventType }}</td>
-            </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ event.id }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('events_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('events_edit', { 'id': event.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="col-12 mt-4">
+        <div class="card m-3 shadow p-3 mb-5 bg-white rounded border-0">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{ event.eventImage }}" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">{{ event.eventName }}</h5>
+                        <h6 class="card-text">{{ event.eventDescription }}</h6>
+                        <div class="row">
+                            <p class="card-text col-4">
+                                <small class="font-weight-bold d-block"><i class="far fa-clock text-danger"></i></small>
+                                <small class="text-muted">{% if event.eventDatetime %}{{ event.eventDatetime|date('d.m.Y H:i:s') }}{% endif %}</small>
+                            </p>
+                            <p class="card-text col-4">
+                                <small class="font-weight-bold d-block"><i class="fas fa-info text-danger"></i></small>
+                                <small class="text-muted">{{event.eventUrl}}</small>
+                            </p>
+                            <p class="card-text col-4">
+                                <small class="font-weight-bold d-block"><i class="far fa-envelope text-danger"></i></small>
+                                <small class="text-muted">{{event.eventContact}}</small>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p class="card-text col-4">
+                                <small class="font-weight-bold d-block"><i class="fas fa-map-marker text-danger"></i></small>
+                                <small class="text-muted">{{ event.eventlocationName }}</small>
+                                <small class="text-muted">{{ event.eventlocationAddress}}{{event.eventlocationZipCity}}</small>
+                            </p>
+                            <p class="card-text col-4">
+                                <small class="font-weight-bold d-block"><i class="fas fa-users text-danger"></i></small>
+                                <small class="text-muted">{{event.eventCapacity}}</small>
+                            </p>
+                            <p class="card-text col-4">
+                                <small class="font-weight-bold d-block"><i class="fas fa-hashtag text-danger"></i></small>
+                                <small class="text-muted">{{event.eventType}}</small>
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a href="{{ path('events_index') }}"><button type="button" class="btn btn-secondary m-4">Back</button></a>
+                            <a href="{{ path('events_edit', { 'id': event.id }) }}"><button type="button" class="btn btn-info m-4">Edit</button></a>
+                            {{ form_start(delete_form) }}
+                            <input type="submit" class="btn btn-danger m-4" value="Delete">
+                            {{ form_end(delete_form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+   
 {% endblock %}

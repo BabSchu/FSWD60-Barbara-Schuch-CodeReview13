@@ -3,9 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Events;
+use Doctrine\ORM\Query\AST\WhereClause;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Event controller.
@@ -25,6 +27,24 @@ class EventsController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $events = $em->getRepository('AppBundle:Events')->findAll();
+
+        return $this->render('events/index.html.twig', array(
+            'events' => $events,
+        ));
+    }
+
+
+    /**
+     * Lists all event entities by eventType.
+     *
+     * @Route("/{eventType}", name="events_category")
+     *  @Method("GET")
+     */
+
+    public function listByCategory(string $eventType)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('AppBundle:Events')->findBy(array('eventType' => $eventType));
 
         return $this->render('events/index.html.twig', array(
             'events' => $events,
@@ -60,7 +80,7 @@ class EventsController extends Controller
     /**
      * Finds and displays a event entity.
      *
-     * @Route("/{id}", name="events_show")
+     * @Route("/show/{id}", name="events_show")
      * @Method("GET")
      */
     public function showAction(Events $event)

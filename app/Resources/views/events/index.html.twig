@@ -1,59 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Events list</h1>
+</div>
+    <nav class="navbar navbar-light m-3 p-0">
+        <div class="form-inline">
+            <div class="dropdown mr-1">
+                <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                Filter
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                    <a class="dropdown-item" href="{{ path('events_index') }}">Alles</a>
+                    <a class="dropdown-item" href="{{ path('events_index') }}Party">Party</a>
+                    <a class="dropdown-item" href="{{ path('events_index') }}Tanz">Tanz</a>
+                    <a class="dropdown-item" href="{{ path('events_index') }}Klassik">Klassik</a>
+                    <a class="dropdown-item" href="{{ path('events_index') }}U-Musik">U-Musik</a>
+                </div>
+            </div>
+        </div>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
 
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Eventname</th>
-                <th>Eventdatetime</th>
-                <th>Eventdescription</th>
-                <th>Eventimage</th>
-                <th>Eventcapacity</th>
-                <th>Eventcontact</th>
-                <th>Eventlocationname</th>
-                <th>Eventlocationaddress</th>
-                <th>Eventlocationzipcity</th>
-                <th>Eventurl</th>
-                <th>Eventtype</th>
-                <th>Id</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container">
+    <div class="row">
+
         {% for event in events %}
-            <tr>
-                <td><a href="{{ path('events_show', { 'id': event.id }) }}">{{ event.eventName }}</a></td>
-                <td>{% if event.eventDatetime %}{{ event.eventDatetime|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ event.eventDescription }}</td>
-                <td>{{ event.eventImage }}</td>
-                <td>{{ event.eventCapacity }}</td>
-                <td>{{ event.eventContact }}</td>
-                <td>{{ event.eventlocationName }}</td>
-                <td>{{ event.eventlocationAddress }}</td>
-                <td>{{ event.eventlocationZipCity }}</td>
-                <td>{{ event.eventUrl }}</td>
-                <td>{{ event.eventType }}</td>
-                <td>{{ event.id }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('events_show', { 'id': event.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('events_edit', { 'id': event.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('events_new') }}">Create a new event</a>
-        </li>
-    </ul>
+        <div class="card border-0 col-10 offset-1 col-md-6 offset-md-0 col-lg-3 mx-auto p-3">
+            <img src="{{ event.eventImage }}" class="card-img-top" alt="...">
+            <div class="card-body p-1">
+                <h5 class="card-title text-danger">{{ event.eventName }}</a></h5>
+                <p class="card-text">{{ event.eventlocationName }}</p>
+                <p class="card-text"><i class="far fa-clock mr-2"></i>{% if event.eventDatetime %}{{ event.eventDatetime|date('Y-m-d H:i:s') }}{% endif %}</p>
+                <a href="{{ path('events_show', { 'id': event.id }) }}" class="btn btn-danger">Show Details</a>
+            </div>
+        </div>
+
+      {% endfor %}
+
+    </div>
 {% endblock %}
