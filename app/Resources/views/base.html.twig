@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="{{ asset('CSS/style.css')}}" rel="stylesheet" type="text/css">
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+ </head>
+ <body>
+<div class="card text-light border-0 cardimg">
+    <div class="card-img-overlay text-center m-3 bg-color">
+        <nav class="navbar navbar-expand-lg navbar-light p-0">
+            <a class="navbar-brand text-light"href="home.php">BigEvents</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/events">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Konzerte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Party</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <a href="../pages/home.php" class="text-white bg-color">
+            <h1 class="card-title font-weight-normal py-3 p-5">Vienna</h1>
+        </a>
+    </div>
+</div>
+
+   <div class="container">
+<div class="row">
+<div class="col-md-12">
+   {% block body %}{% endblock %}
+</div>
+</div>
+   
+   </div><!-- /.container -->
+
+
+<footer class="page-footer mt-4 py-4 px-0 sticky-bottom">
+    <div class="row m-0">
+        <div class="col-12 text-center col-md-4 text-md-right p-0">
+            <p class="mt-2"> @Copyright 2019 | Barbara Schuch </p>
+        </div>
+        <div class="col-12 col-md-4 mt-2 text-center p-0">
+            <div class="socialmedia-icon">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="socialmedia-icon">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div class="socialmedia-icon">
+                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        {% block javascripts %}        
+        <script type="text/javascript" src="{{ asset('JS/scipt.css') }}" charset="UTF-8"></script>
+        {% endblock %}
+ </body>
+</html>
+

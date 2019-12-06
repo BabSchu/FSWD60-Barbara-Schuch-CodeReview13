@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Event</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Eventname</th>
+                <td>{{ event.eventName }}</td>
+            </tr>
+            <tr>
+                <th>Eventdatetime</th>
+                <td>{% if event.eventDatetime %}{{ event.eventDatetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Eventdescription</th>
+                <td>{{ event.eventDescription }}</td>
+            </tr>
+            <tr>
+                <th>Eventimage</th>
+                <td>{{ event.eventImage }}</td>
+            </tr>
+            <tr>
+                <th>Eventcapacity</th>
+                <td>{{ event.eventCapacity }}</td>
+            </tr>
+            <tr>
+                <th>Eventcontact</th>
+                <td>{{ event.eventContact }}</td>
+            </tr>
+            <tr>
+                <th>Eventlocationname</th>
+                <td>{{ event.eventlocationName }}</td>
+            </tr>
+            <tr>
+                <th>Eventlocationaddress</th>
+                <td>{{ event.eventlocationAddress }}</td>
+            </tr>
+            <tr>
+                <th>Eventlocationzipcity</th>
+                <td>{{ event.eventlocationZipCity }}</td>
+            </tr>
+            <tr>
+                <th>Eventurl</th>
+                <td>{{ event.eventUrl }}</td>
+            </tr>
+            <tr>
+                <th>Eventtype</th>
+                <td>{{ event.eventType }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ event.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('events_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('events_edit', { 'id': event.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
