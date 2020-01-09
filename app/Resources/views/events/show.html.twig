@@ -15,30 +15,31 @@
                         <div class="row">
                             <p class="card-text col-4">
                                 <small class="font-weight-bold d-block"><i class="far fa-clock text-danger"></i></small>
-                                <small class="text-muted">{% if event.eventDatetime %}{{ event.eventDatetime|date('d.m.Y H:i:s') }}{% endif %}</small>
+                                <small class="text-muted d-block">{% if event.eventDatetime %}{{ event.eventDatetime|date('d.m.Y H:i:s') }}{% endif %}</small>
                             </p>
                             <p class="card-text col-4">
                                 <small class="font-weight-bold d-block"><i class="fas fa-info text-danger"></i></small>
-                                <small class="text-muted">{{event.eventUrl}}</small>
+                                <small class="text-muted d-block">{{event.eventUrl}}</small>
                             </p>
                             <p class="card-text col-4">
                                 <small class="font-weight-bold d-block"><i class="far fa-envelope text-danger"></i></small>
-                                <small class="text-muted">{{event.eventContact}}</small>
+                                <small class="text-muted d-block">{{event.eventContact}}</small>
                             </p>
                         </div>
                         <div class="row">
                             <p class="card-text col-4">
                                 <small class="font-weight-bold d-block"><i class="fas fa-map-marker text-danger"></i></small>
-                                <small class="text-muted">{{ event.eventlocationName }}</small>
-                                <small class="text-muted">{{ event.eventlocationAddress}}{{event.eventlocationZipCity}}</small>
+                                <small class="text-muted d-block">{{ event.eventlocationName }}</small>
+                                <small class="text-muted d-block">{{ event.eventlocationAddress }}</small>
+                                <small class="text-muted d-block">{{ event.eventlocationZipCity }}</small>
                             </p>
                             <p class="card-text col-4">
                                 <small class="font-weight-bold d-block"><i class="fas fa-users text-danger"></i></small>
-                                <small class="text-muted">{{event.eventCapacity}}</small>
+                                <small class="text-muted d-block">{{event.eventCapacity}}</small>
                             </p>
                             <p class="card-text col-4">
                                 <small class="font-weight-bold d-block"><i class="fas fa-hashtag text-danger"></i></small>
-                                <small class="text-muted">{{event.eventType}}</small>
+                                <small class="text-muted d-block">{{event.eventType}}</small>
                             </p>
                         </div>
                         <div class="d-flex justify-content-center">
